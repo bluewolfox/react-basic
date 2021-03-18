@@ -2,9 +2,7 @@ const path = require("path");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
-  name: "gugudan",
-  mode: "development",
-  devtool: "inline-source-map",
+  mode:"development",
   resolve: {
     extensions: [".js", ".jsx"],
   },
