@@ -1,14 +1,13 @@
 const React = require('react');
-const { Component } = require("react");
 
-class WordRelay extends Component {
-  state = {
-    text: "Hello, wepack",
-  };
+const WordRelay = () => {
+  
 
-  render() {
-    return <div>{this.state.text}</div>;
-  }
-}
+  return (
+    <>
+      
+    </>
+  );
+};
 
 module.exports = WordRelay;

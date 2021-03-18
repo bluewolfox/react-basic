@@ -1,32 +1,47 @@
-const path = require("path");
+const path = require('path');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
-  name: "word-relay-setting",
-  mode: "development", // 실서비스는 production
-  devtool: "eval", // 빠르게
+  name: "gugudan",
+  mode: "development",
+  devtool: 'inline-source-map',
   resolve: {
-    extensions: [".js", ".jsx"], // 알아서 확장명을 찾아서 만들어준다.
+    extensions: ['.js', '.jsx',],
   },
-
   entry: {
-    // 입력
-    app: ["./client"],
+    app: './client'
   },
   module: {
     rules: [
       {
-        test: /\.jsx?/, // 규칙을 적용할 파일들
-        loader: "babel-loader",
-        options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: ["@babel/plugin-proposal-class-properties"],
+        test: /\.jsx?$/,
+        exclude: path.join(__dirname, 'node_modules'),
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["@babel/preset-env", {
+                targets: { browsers: ['last 2 chrome versions'] },
+                debug: true
+              }],
+              "@babel/preset-react"
+            ],
+            plugins: ["react-refresh/babel"]
+          },
         },
-      },
-    ],
+      }
+    ]
   },
+  plugins: [
+    new ReactRefreshWebpackPlugin()
+  ],
   output: {
-    // 출력
     path: path.join(__dirname, "dist"),
-    filename: "app.js",
+    filename: '[name].js',
+    publicPath: "/dist"
   },
-};
+  devServer: {
+    publicPath: "/dist",
+    hot: true
+  }
+}
