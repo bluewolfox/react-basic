@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useCallback, useEffect } from "react";
+import React, { useReducer, useEffect } from "react";
 import Table from "./Table";
 
 const initialState = {
