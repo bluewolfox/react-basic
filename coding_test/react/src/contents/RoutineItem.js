@@ -5,6 +5,7 @@ const RoutineItem = ({ active, item, state, setState }) => {
   const [value, setValue] = useState(item.name);
 
   const onEditItem = (e) => {
+    e.preventDefault();
     e.target.disabled = true;
     const assignData = [...state.data];
     const index = assignData.findIndex((el) => el.id === item.id);
@@ -12,22 +13,27 @@ const RoutineItem = ({ active, item, state, setState }) => {
     setState({ type: "DATA", value: assignData });
   };
 
+  const onClickItem = () => {
+    setState({ type: "SELECTED", value: item.id });
+    setState({ type: "DELETE_DATA", value: [] });
+  };
+
   return (
     <li
       className={`routine-item ${active ? "active" : ""}`}
-      onClick={() => {
-        setState({ type: "SELECT", value: item.id });
-      }}
+      onClick={onClickItem}
     >
-      <input
-        ref={itemRef}
-        type="text"
-        disabled
-        value={value}
-        className="routine-title"
-        onChange={(e) => setValue(e.target.value)}
-        onBlur={(e) => onEditItem}
-      />
+      <form onSubmit={onEditItem}>
+        <input
+          ref={itemRef}
+          type="text"
+          disabled
+          value={value}
+          className="routine-title"
+          onChange={(e) => setValue(e.target.value)}
+          onBlur={(e) => onEditItem}
+        />
+      </form>
       <div className="routine-utils">
         <button
           id="routine-modify"

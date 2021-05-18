@@ -22,7 +22,14 @@ const RoutineForm = ({ state, setState }) => {
         const { data } = state;
         setState({
           type: "DATA",
-          value: [...data, { id: data[data.length - 1].id + 1, name: value, exercises: [] }],
+          value: [
+            ...data,
+            {
+              id: data.length ? data[data.length - 1].id + 1 : 0,
+              name: value,
+              exercises: [],
+            },
+          ],
         });
         setState({ type: "ADD_ROUTINE", value: false });
       }}

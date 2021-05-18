@@ -5,15 +5,13 @@ const AddTodoForm = ({ state, setState }) => {
 
   const onSubmitTodo = (e) => {
     e.preventDefault();
-    const { data } = state;
-    const target = data[state.selected].exercises;
-    target.push({ name: todo });
-    console.log(target);
-    setState({
-      type: "DATA",
-      value: { ...data, data: data[state.selected].exercises },
-    });
-    // setState({ type: "ADD_TODO", value: false });
+    const stateObj = [...state.data];
+    stateObj[state.selected].exercises = [
+      ...stateObj[state.selected].exercises,
+      { name: todo },
+    ];
+    setState({ type: "DATA", value: stateObj });
+    setState({ type: "ADD_TODO", value: false });
   };
 
   return (

@@ -10,6 +10,7 @@ const initialState = {
   data: [
     { id: 0, name: "2021/05/16", exercises: [{ name: "리액트 공부하기" }] },
   ],
+  deleteData: [],
 };
 
 const reducer = (state, action) => {
@@ -19,7 +20,8 @@ const reducer = (state, action) => {
     case "ADD_ROUTINE": return { ...state, addRoutine: action.value };
     case "ADD_TODO": return { ...state, addTodo: action.value };
     case "DATA": return { ...state, data: action.value };
-    case "SELECT": return { ...state, selected: action.value };
+    case "SELECTED": return { ...state, selected: action.value };
+    case "DELETE_DATA": return { ...state, deleteData: action.value };
   }
 };
 
