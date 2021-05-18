@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+  </head>
+  <body>
+    <div id="root">
+      <div class="container">
+        <div class="toolbar">
+          <header class="header">Lists</header>
+          <section class="utils-section">
+            <div class="routine-control">
+              <button class="add-routine-button">목록 추가</button>
+            </div>
+            <div class="exercise-control">
+              <div class="buttons">
+                <button class="add-exercise-button">할일 추가</button>
+                <button class="delete-exercise-button">삭제</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="contents-field">
+          <nav class="routine-navigator">
+            <form class="add-routine-form">
+              <input
+                class="add-routine-input"
+                type="text"
+                name="routine"
+                placeholder="목록을 추가하세요"
+              />
+            </form>
+            <ul class="routine-list">
+              <!-- Routine View Render -->
+            </ul>
+          </nav>
+
+          <section class="exercise-section">
+            <div class="exercise-list-field">
+              <ul class="exercise-list">
+                <!-- Exercise View Render -->
+              </ul>
+
+              <form class="add-exercise-form">
+                <div class="add-exercise-field">
+                  <div class="input-field">
+                    <div class="exercise-name-input">
+                      <label for="ex-name">할일</label>
+                      <input
+                        type="text"
+                        id="exercise-name"
+                        name="name"
+                        placeholder="할일을 입력하세요"
+                      />
+                    </div>
+                  </div>
+                  <div class="submit-field">
+                    <button class="ex-submit" type="submit">저장</button>
+                    <button class="ex-cancel" type="button">취소</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
